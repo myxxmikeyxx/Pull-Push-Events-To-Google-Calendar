@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base target="_top">
+    </head>
+<body>
+
+<form action="/action_page.php">
+  <label for="cars">Choose a Calendar:</label>
+  <select name="calen" id="CalendarsUserHas">
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>Click the "Submit" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+
+
+      <p>List of things:</p>
+<ul id="things">
+    <li>Loading...</li>
+</ul>
+
+<!-- script
+src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+// The code in this function runs when the page is loaded.
+$(function() {
+  google.script.run.withSuccessHandler(showThings)
+      .getData();
+});
+// {
+//   google.script.run.withSuccessHandler(showThings)
+//       .getLotsOfThings();
+// });
+
+function showThings(things) {
+  var list = $('#things');
+  list.empty();
+  for (var i = 0; i < things.length; i++) {
+    list.append('<li>' + things[i] + '</li>');
+  }
+}
+</script>
+
+</body>
+</html>
